@@ -1,7 +1,7 @@
 package fun4.nonogrambackend.controllers;
 
 import fun4.nonogrambackend.repositories.UserRepository;
-import fun4.nonogrambackend.models.User;
+import fun4.nonogrambackend.domain.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

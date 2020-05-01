@@ -1,4 +1,4 @@
-package fun4.nonogrambackend.models;
+package fun4.nonogrambackend.domain;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
