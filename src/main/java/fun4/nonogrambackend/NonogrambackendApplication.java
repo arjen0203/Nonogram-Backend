@@ -3,7 +3,8 @@ package fun4.nonogrambackend;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages={
+        "fun4.nonogrambackend.Repositories"})
 public class NonogrambackendApplication {
 
     public static void main(String[] args) {
