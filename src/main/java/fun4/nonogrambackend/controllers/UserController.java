@@ -1,6 +1,6 @@
 package fun4.nonogrambackend.controllers;
 
-import fun4.nonogrambackend.Repositories.UserRepository;
+import fun4.nonogrambackend.repositories.UserRepository;
 import fun4.nonogrambackend.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,10 +17,10 @@ public class UserController {
     private UserRepository userRepository;
 
     @PostMapping(path="/add")
-    public @ResponseBody String addNewUser (@RequestParam String name, @RequestParam String email) {
+    public @ResponseBody String addNewUser (@RequestParam String name) {
         User n = new User();
         n.setName(name);
-        n.setEmail(email);
+        //n.setEmail(email);
         userRepository.save(n);
         return "Saved";
     }

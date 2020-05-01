@@ -10,8 +10,8 @@ public class Nonogram {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     private int id;
-    private int[][] topRow;
-    private int[][] sideRow;
+    private String topRow;
+    private String sideRow;
 
     public int getId() {
         return id;
@@ -19,15 +19,15 @@ public class Nonogram {
 
     public void setId(int id) { this.id = id;};
 
-    public void setTopRow(int[][] topRow) { this.topRow = topRow; };
+    public void setTopRow(String topRow) { this.topRow = topRow; };
 
-    public void setSideRow(int[][] sideRow) { this.sideRow = sideRow; };
+    public void setSideRow(String sideRow) { this.sideRow = sideRow; };
 
-    public int[][] getTopRow() {
+    public String getTopRow() {
         return topRow;
     }
 
-    public int[][] getSideRow() {
+    public String getSideRow() {
         return sideRow;
     }
 
