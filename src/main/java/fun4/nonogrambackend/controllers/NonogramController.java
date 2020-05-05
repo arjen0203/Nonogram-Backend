@@ -10,7 +10,6 @@ import java.util.Optional;
 @RestController
 @RequestMapping(path="/nonogram")
 public class NonogramController {
-
     @Autowired
     private NonogramRepository nonogramRepository;
 
@@ -20,10 +19,8 @@ public class NonogramController {
 
     @CrossOrigin
     @PostMapping(path="/add")
-    public @ResponseBody String addNewNonogram (@RequestParam() String topRow, @RequestParam String sideRow) {
+    public @ResponseBody String addNewNonogram (@RequestParam() String name) {
         Nonogram n = new Nonogram();
-        n.setTopRow(topRow);
-        n.setSideRow(sideRow);
         nonogramRepository.save(n);
         return "Saved";
     }

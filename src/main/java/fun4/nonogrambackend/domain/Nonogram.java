@@ -1,17 +1,24 @@
 package fun4.nonogrambackend.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import org.hibernate.annotations.Type;
+
+import javax.persistence.*;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 @Entity
 public class Nonogram {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     private int id;
-    private String topRow;
-    private String sideRow;
+
+    private String name;
+
+    @OneToMany(mappedBy = "nonogram")
+    private List<HintTopValue> topValues;
+
+    //private List<HintSideValue> sideValues;
 
     public int getId() {
         return id;
@@ -19,16 +26,8 @@ public class Nonogram {
 
     public void setId(int id) { this.id = id;};
 
-    public void setTopRow(String topRow) { this.topRow = topRow; };
-
-    public void setSideRow(String sideRow) { this.sideRow = sideRow; };
-
-    public String getTopRow() {
-        return topRow;
-    }
-
-    public String getSideRow() {
-        return sideRow;
-    }
+    public void setName(String name) {
+        this.name = name;
+    };
 
 }
