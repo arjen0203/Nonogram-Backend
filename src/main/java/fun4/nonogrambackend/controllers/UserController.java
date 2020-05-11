@@ -16,7 +16,8 @@ public class UserController {
     @Autowired
     private UserRepository userRepository;
 
-    @PostMapping(path="/add")
+    //change to post
+    @GetMapping(path="/add")
     public @ResponseBody String addNewUser (@RequestParam String name) {
         User n = new User();
         n.setName(name);

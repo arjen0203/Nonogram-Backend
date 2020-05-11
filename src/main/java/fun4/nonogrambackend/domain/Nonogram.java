@@ -1,11 +1,7 @@
 package fun4.nonogrambackend.domain;
 
-import org.hibernate.annotations.Type;
-
 import javax.persistence.*;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @Entity
 public class Nonogram {
@@ -15,19 +11,24 @@ public class Nonogram {
 
     private String name;
 
-    @OneToMany(mappedBy = "nonogram")
+    @OneToMany
     private List<HintTopValue> topValues;
+    @OneToMany
+    private List<HintSideValue> sideValues;
 
-    //private List<HintSideValue> sideValues;
+    public void setSideValues(List<HintSideValue> sideValues) {
+        this.sideValues = sideValues;
+    }
+
+    public void setTopValues(List<HintTopValue> topValues) {
+        this.topValues = topValues;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
     public int getId() {
         return id;
     }
-
-    public void setId(int id) { this.id = id;};
-
-    public void setName(String name) {
-        this.name = name;
-    };
-
 }
