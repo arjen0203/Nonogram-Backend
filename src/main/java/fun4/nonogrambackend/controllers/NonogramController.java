@@ -24,9 +24,10 @@ public class NonogramController {
     private HintTopValueRepository hintTopValueRepository;
 
     private final long id = 1;
-    private final int[][] topRow = new int[][] { {1}, {5}, {2}, {5}, {2, 1}, {2}, {0} };
-    private final int[][] sideRow = new int[][] { {2, 1}, {1, 3}, {1, 2}, {3}, {4}, {1}, {0}};
+    private final int[][] topRow = new int[][] { {1}, {5}, {2}, {5}, {2, 1}, {2}};
+    private final int[][] sideRow = new int[][] { {2, 1}, {1, 3}, {1, 2}, {3}, {4}, {1}};
 
+    //todo: change to post
     @CrossOrigin
     @GetMapping(path="/add")
     public @ResponseBody String addNewNonogram() {

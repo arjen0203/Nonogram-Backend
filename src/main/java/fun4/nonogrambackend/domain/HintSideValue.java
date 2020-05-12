@@ -21,4 +21,16 @@ public class HintSideValue {
         this.xCord = x;
         this.yCord = y;
     }
+
+    public int getValue() {
+        return value;
+    }
+
+    public int getxCord() {
+        return xCord;
+    }
+
+    public int getyCord() {
+        return yCord;
+    }
 }
