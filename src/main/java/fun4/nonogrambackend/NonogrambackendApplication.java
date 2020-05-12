@@ -9,5 +9,4 @@ public class NonogrambackendApplication {
     public static void main(String[] args) {
         SpringApplication.run(NonogrambackendApplication.class, args);
     }
-    //yes
 }
