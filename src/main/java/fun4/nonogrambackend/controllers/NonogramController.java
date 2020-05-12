@@ -11,7 +11,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
-import java.util.Optional;
 
 @RestController
 @RequestMapping(path="/nonogram")
@@ -60,8 +59,11 @@ public class NonogramController {
 
     @CrossOrigin
     @GetMapping("/get")
-    public @ResponseBody Nonogram nonogram(@RequestParam int id) {
-        Nonogram test = nonogramRepository.findById(id).get();
-        return test;
+    public ResponseEntity<?> nonogram(@RequestParam int id) {
+        var nonogram = nonogramRepository.findById(id);
+        if (nonogram.isPresent()) {
+            return ResponseEntity.ok(nonogram.get());
+        }
+        return ResponseEntity.status(404).body("Game not found");
     }
 }
