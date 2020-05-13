@@ -37,4 +37,12 @@ public class HintSideValue {
     public void setValue(int value) {
         this.value = value;
     }
+
+    public void setxCord(int xCord) {
+        this.xCord = xCord;
+    }
+
+    public void setyCord(int yCord) {
+        this.yCord = yCord;
+    }
 }

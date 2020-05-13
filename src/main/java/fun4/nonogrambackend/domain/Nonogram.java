@@ -12,9 +12,9 @@ public class Nonogram {
 
     private String name;
 
-    @OneToMany
+    @OneToMany(cascade = {CascadeType.ALL})
     private List<HintTopValue> topValues;
-    @OneToMany
+    @OneToMany(cascade = {CascadeType.ALL})
     private List<HintSideValue> sideValues;
 
     public void setSideValues(List<HintSideValue> sideValues) {

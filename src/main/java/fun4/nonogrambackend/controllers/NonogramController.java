@@ -26,39 +26,12 @@ public class NonogramController {
     private final long id = 1;
     private final int[][] topRow = new int[][] { {1}, {5}, {2}, {5}, {2, 1}, {2}};
     private final int[][] sideRow = new int[][] { {2, 1}, {1, 3}, {1, 2}, {3}, {4}, {1}};
-
-    //todo: change to post
+    
     @CrossOrigin
     @PostMapping(path="/add")
     public ResponseEntity<?> addNewNonogram(@Valid @RequestBody Nonogram nonogram) {
         nonogramRepository.save(nonogram);
         return ResponseEntity.ok(nonogram);
-
-//        Nonogram n = new Nonogram();
-//        ArrayList<HintSideValue> sideValues = new ArrayList<>();
-//        ArrayList<HintTopValue> topValues = new ArrayList<>();
-//
-//        for (int x = 0; x < topRow.length; x++) {
-//            for (int y = 0; y < topRow[x].length; y++){
-//                HintTopValue value = new HintTopValue(topRow[x][y], x, y);
-//                topValues.add(value);
-//            }
-//        }
-//        hintTopValueRepository.saveAll(topValues);
-//
-//        for (int x = 0; x < sideRow.length; x++) {
-//            for (int y = 0; y < sideRow[x].length; y++){
-//                HintSideValue value = new HintSideValue(sideRow[x][y], x, y);
-//                sideValues.add(value);
-//            }
-//        }
-//        hintSideValueRepository.saveAll(sideValues);
-//
-//        n.setSideValues(sideValues);
-//        n.setTopValues(topValues);
-//        n.setName("rens");
-//        nonogramRepository.save(n);
-//        return "Saved";
     }
 
     @CrossOrigin
