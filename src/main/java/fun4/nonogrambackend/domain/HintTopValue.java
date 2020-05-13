@@ -22,6 +22,10 @@ public class HintTopValue {
         this.yCord = y;
     }
 
+    public void setValue(int value) {
+        this.value = value;
+    }
+
     public int getyCord() {
         return yCord;
     }

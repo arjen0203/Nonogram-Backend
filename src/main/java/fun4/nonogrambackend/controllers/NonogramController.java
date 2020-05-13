@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.ArrayList;
 
 @RestController
@@ -28,33 +29,36 @@ public class NonogramController {
 
     //todo: change to post
     @CrossOrigin
-    @GetMapping(path="/add")
-    public @ResponseBody String addNewNonogram() {
-        Nonogram n = new Nonogram();
-        ArrayList<HintSideValue> sideValues = new ArrayList<>();
-        ArrayList<HintTopValue> topValues = new ArrayList<>();
+    @PostMapping(path="/add")
+    public ResponseEntity<?> addNewNonogram(@Valid @RequestBody Nonogram nonogram) {
+        nonogramRepository.save(nonogram);
+        return ResponseEntity.ok(nonogram);
 
-        for (int x = 0; x < topRow.length; x++) {
-            for (int y = 0; y < topRow[x].length; y++){
-                HintTopValue value = new HintTopValue(topRow[x][y], x, y);
-                topValues.add(value);
-            }
-        }
-        hintTopValueRepository.saveAll(topValues);
-
-        for (int x = 0; x < sideRow.length; x++) {
-            for (int y = 0; y < sideRow[x].length; y++){
-                HintSideValue value = new HintSideValue(sideRow[x][y], x, y);
-                sideValues.add(value);
-            }
-        }
-        hintSideValueRepository.saveAll(sideValues);
-
-        n.setSideValues(sideValues);
-        n.setTopValues(topValues);
-        n.setName("rens");
-        nonogramRepository.save(n);
-        return "Saved";
+//        Nonogram n = new Nonogram();
+//        ArrayList<HintSideValue> sideValues = new ArrayList<>();
+//        ArrayList<HintTopValue> topValues = new ArrayList<>();
+//
+//        for (int x = 0; x < topRow.length; x++) {
+//            for (int y = 0; y < topRow[x].length; y++){
+//                HintTopValue value = new HintTopValue(topRow[x][y], x, y);
+//                topValues.add(value);
+//            }
+//        }
+//        hintTopValueRepository.saveAll(topValues);
+//
+//        for (int x = 0; x < sideRow.length; x++) {
+//            for (int y = 0; y < sideRow[x].length; y++){
+//                HintSideValue value = new HintSideValue(sideRow[x][y], x, y);
+//                sideValues.add(value);
+//            }
+//        }
+//        hintSideValueRepository.saveAll(sideValues);
+//
+//        n.setSideValues(sideValues);
+//        n.setTopValues(topValues);
+//        n.setName("rens");
+//        nonogramRepository.save(n);
+//        return "Saved";
     }
 
     @CrossOrigin
@@ -64,6 +68,6 @@ public class NonogramController {
         if (nonogram.isPresent()) {
             return ResponseEntity.ok(nonogram.get());
         }
-        return ResponseEntity.status(404).body("Game not found");
+        return ResponseEntity.status(404).body("Nonogram not found");
     }
 }
