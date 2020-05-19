@@ -12,8 +12,8 @@ public class User {
     @Column(unique = true)
     private String name;
 
-    @OneToMany
-    private List<Nonogram> nonogram;
+//    @OneToMany
+//    private List<Nonogram> nonogram;
 
     public Integer getId() {
         return id;
