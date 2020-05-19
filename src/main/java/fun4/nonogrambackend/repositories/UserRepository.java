@@ -4,6 +4,8 @@ import org.springframework.data.repository.CrudRepository;
 
 import fun4.nonogrambackend.domain.User;
 
-public interface UserRepository extends CrudRepository<User, Integer> {
+import java.util.Optional;
 
+public interface UserRepository extends CrudRepository<User, Integer> {
+    Optional<User> findByUsername(String username);
 }
