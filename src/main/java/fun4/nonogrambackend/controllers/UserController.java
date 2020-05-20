@@ -27,7 +27,7 @@ public class UserController {
     @CrossOrigin
     @GetMapping(path="/login")
     public ResponseEntity<?> LoginUser(@Valid @RequestBody User user) {
-        Optional<User> gottenUser =  userRepository.findByUsername(user.getName());
+        Optional<User> gottenUser =  userRepository.findByName(user.getName());
 
         if (gottenUser.isPresent()) return ResponseEntity.ok(user);
         return ResponseEntity.status(404).body("User not found");
