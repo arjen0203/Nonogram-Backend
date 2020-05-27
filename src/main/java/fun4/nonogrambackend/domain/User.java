@@ -1,33 +1,39 @@
 package fun4.nonogrambackend.domain;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
 public class User {
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
-    private Integer id;
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    private long id;
 
     @Column(unique = true)
-    private String name;
+    private String username;
 
-//    @OneToMany
-//    private List<Nonogram> nonogram;
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    private String password;
 
-    public Integer getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public String getUsername() {
+        return username;
     }
 
-    public String getName() {
-        return name;
+    public void setUsername(String name) {
+        this.username = name;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getPassword() {
+        return password;
     }
 }

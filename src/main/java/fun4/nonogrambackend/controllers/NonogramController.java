@@ -1,29 +1,30 @@
 package fun4.nonogrambackend.controllers;
 
-import fun4.nonogrambackend.domain.HintSideValue;
-import fun4.nonogrambackend.domain.HintTopValue;
 import fun4.nonogrambackend.repositories.HintSideValueRepository;
 import fun4.nonogrambackend.repositories.HintTopValueRepository;
 import fun4.nonogrambackend.repositories.NonogramRepository;
 import fun4.nonogrambackend.domain.Nonogram;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.transaction.Transactional;
 import javax.validation.Valid;
-import java.util.ArrayList;
 
 @RestController
 @RequestMapping(path="/nonogram")
 public class NonogramController {
-    @Autowired
-    private NonogramRepository nonogramRepository;
-    @Autowired
-    private HintSideValueRepository hintSideValueRepository;
-    @Autowired
-    private HintTopValueRepository hintTopValueRepository;
+    private final NonogramRepository nonogramRepository;
+//    private final HintSideValueRepository hintSideValueRepository;
+//    private final HintTopValueRepository hintTopValueRepository;
+
+    public NonogramController(NonogramRepository nonogramRepository) {
+        this.nonogramRepository = nonogramRepository;
+//        this.hintSideValueRepository = hintSideValueRepository;
+//        this.hintTopValueRepository = hintTopValueRepository;
+    }
 
     @CrossOrigin
+    @Transactional
     @PostMapping(path="/add")
     public ResponseEntity<?> addNewNonogram(@Valid @RequestBody Nonogram nonogram) {
         nonogramRepository.save(nonogram);
