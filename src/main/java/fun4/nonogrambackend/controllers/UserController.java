@@ -7,6 +7,7 @@ import fun4.nonogrambackend.services.UserService;
 import fun4.nonogrambackend.validators.UserValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,12 +19,10 @@ import java.util.Optional;
 public class UserController {
     private final UserService userService;
     private final UserValidator userValidator;
-    private final UserRepository userRepository;
 
-    public UserController(UserService userService, UserValidator userValidator, UserRepository userRepository) {
+    public UserController(UserService userService, UserValidator userValidator) {
         this.userService = userService;
         this.userValidator = userValidator;
-        this.userRepository = userRepository;
     }
 
     @CrossOrigin
@@ -41,9 +40,7 @@ public class UserController {
     @CrossOrigin
     @GetMapping(path="/login")
     public ResponseEntity<?> LoginUser(@Valid @RequestBody User user) {
-        Optional<User> gottenUser =  userRepository.findByUsername(user.getUsername());
 
-        if (gottenUser.isPresent()) return ResponseEntity.ok(user);
         return ResponseEntity.status(404).body("User not found");
     }
 }

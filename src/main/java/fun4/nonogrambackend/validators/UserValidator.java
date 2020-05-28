@@ -23,7 +23,7 @@ public class UserValidator {
             return new Error("No valid name was provided");
         }
 
-        if (username.length() < 5) {
+        if (username.length() < 3) {
             return new Error("Username is too short");
         }
 
