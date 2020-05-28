@@ -14,13 +14,10 @@ import javax.validation.Valid;
 @RequestMapping(path="/nonogram")
 public class NonogramController {
     private final NonogramRepository nonogramRepository;
-//    private final HintSideValueRepository hintSideValueRepository;
-//    private final HintTopValueRepository hintTopValueRepository;
+
 
     public NonogramController(NonogramRepository nonogramRepository) {
         this.nonogramRepository = nonogramRepository;
-//        this.hintSideValueRepository = hintSideValueRepository;
-//        this.hintTopValueRepository = hintTopValueRepository;
     }
 
     @CrossOrigin
