@@ -1,13 +1,15 @@
 package fun4.nonogrambackend.security;
 
 import fun4.nonogrambackend.services.UserDetailsServiceImpl;
-import org.springframework.http.HttpMethod;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
@@ -24,6 +26,8 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
         this.userDetailsService = userDetailsService;
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
     }
+
+
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
