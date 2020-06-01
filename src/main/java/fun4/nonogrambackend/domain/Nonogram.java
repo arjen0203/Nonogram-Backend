@@ -17,8 +17,8 @@ public class Nonogram {
     @OneToMany(cascade = {CascadeType.ALL})
     private List<HintSideValue> sideValues;
 
-//    @ManyToOne
-//    private User user;
+    @ManyToOne
+    private User user;
 
     public void setSideValues(List<HintSideValue> sideValues) {
         this.sideValues = sideValues;
@@ -37,6 +37,14 @@ public class Nonogram {
     }
 
     public String getName() { return name; }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public User getUser() {
+        return user;
+    }
 
     public int[][] getSideValues() {
         ArrayList<ArrayList<Integer>> arrayValues = new ArrayList<>();
