@@ -38,6 +38,14 @@ public class Nonogram {
 
     public String getName() { return name; }
 
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
     public int[][] getSideValues() {
         ArrayList<ArrayList<Integer>> arrayValues = new ArrayList<>();
 
