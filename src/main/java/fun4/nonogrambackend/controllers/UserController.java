@@ -1,24 +1,15 @@
 package fun4.nonogrambackend.controllers;
 
 import com.auth0.jwt.JWT;
-import fun4.nonogrambackend.domain.Nonogram;
 import fun4.nonogrambackend.repositories.UserRepository;
 import fun4.nonogrambackend.domain.User;
-import fun4.nonogrambackend.security.JWTAuthenticationFilter;
-import fun4.nonogrambackend.security.JWTAuthorizationFilter;
-import fun4.nonogrambackend.services.UserDetailsServiceImpl;
 import fun4.nonogrambackend.services.UserService;
 import fun4.nonogrambackend.validators.UserValidator;
 import org.apache.tomcat.util.codec.binary.Base64;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.configurationprocessor.json.JSONException;
-import org.springframework.boot.configurationprocessor.json.JSONObject;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.BadCredentialsException;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
