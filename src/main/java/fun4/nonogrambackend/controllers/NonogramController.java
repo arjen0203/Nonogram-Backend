@@ -2,14 +2,12 @@ package fun4.nonogrambackend.controllers;
 
 import com.auth0.jwt.JWT;
 import fun4.nonogrambackend.domain.User;
-import fun4.nonogrambackend.repositories.HintSideValueRepository;
-import fun4.nonogrambackend.repositories.HintTopValueRepository;
 import fun4.nonogrambackend.repositories.NonogramRepository;
 import fun4.nonogrambackend.domain.Nonogram;
 import fun4.nonogrambackend.repositories.UserRepository;
 import org.apache.tomcat.util.codec.binary.Base64;
-import org.springframework.boot.configurationprocessor.json.JSONException;
-import org.springframework.boot.configurationprocessor.json.JSONObject;
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
