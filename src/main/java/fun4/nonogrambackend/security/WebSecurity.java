@@ -48,6 +48,7 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
         final UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         var corse = new CorsConfiguration().applyPermitDefaultValues();
         corse.addExposedHeader("Authorization");
+        corse.addExposedHeader("maxPages");
         source.registerCorsConfiguration("/**", corse);
         return source;
     }
