@@ -47,6 +47,7 @@ public class Nonogram {
     }
 
     public int[][] getSideValues() {
+        if (topValues == null) return null;
         ArrayList<ArrayList<Integer>> arrayValues = new ArrayList<>();
 
         for (HintSideValue hint: sideValues) {
@@ -60,6 +61,7 @@ public class Nonogram {
     }
 
     public int[][] getTopValues() {
+        if (topValues == null) return null;
         ArrayList<ArrayList<Integer>> arrayValues = new ArrayList<>();
 
         for (HintTopValue hint: topValues) {

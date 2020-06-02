@@ -4,26 +4,31 @@ import com.auth0.jwt.JWT;
 import fun4.nonogrambackend.domain.User;
 import fun4.nonogrambackend.repositories.NonogramRepository;
 import fun4.nonogrambackend.domain.Nonogram;
+import fun4.nonogrambackend.repositories.SortAndPageNonogramRepository;
 import fun4.nonogrambackend.repositories.UserRepository;
 import org.apache.tomcat.util.codec.binary.Base64;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.transaction.Transactional;
 import javax.validation.Valid;
 import java.util.Optional;
+import java.util.List;
 
 @RestController
 @RequestMapping(path="/nonogram")
 public class NonogramController {
     private final NonogramRepository nonogramRepository;
     private final UserRepository userRepository;
+    private final SortAndPageNonogramRepository sortAndPageNonogramRepository;
 
-    public NonogramController(NonogramRepository nonogramRepository, UserRepository userRepository) {
+    public NonogramController(NonogramRepository nonogramRepository, UserRepository userRepository, SortAndPageNonogramRepository sortAndPageNonogramRepository) {
         this.nonogramRepository = nonogramRepository;
         this.userRepository = userRepository;
+        this.sortAndPageNonogramRepository = sortAndPageNonogramRepository;
     }
 
     @CrossOrigin
@@ -43,6 +48,13 @@ public class NonogramController {
         } catch (JSONException e) {
             return ResponseEntity.status(403).body("Unauthorized request");
         }
+    }
+
+    @CrossOrigin
+    @GetMapping("/getAll")
+    public ResponseEntity<?> getAllNonograms(@RequestParam int page) {
+        var nonograms = sortAndPageNonogramRepository.findAllFiltered(PageRequest.of(page, 20));
+        return ResponseEntity.ok().header("totalPages", Integer.toString(nonograms.getTotalPages())).body(nonograms.getContent());
     }
 
     @CrossOrigin
