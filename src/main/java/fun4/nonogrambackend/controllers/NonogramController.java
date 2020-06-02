@@ -54,7 +54,7 @@ public class NonogramController {
     @GetMapping("/getAll")
     public ResponseEntity<?> getAllNonograms(@RequestParam int page) {
         var nonograms = sortAndPageNonogramRepository.findAllFiltered(PageRequest.of(page, 20));
-        return ResponseEntity.ok().header("totalPages", Integer.toString(nonograms.getTotalPages())).body(nonograms.getContent());
+        return ResponseEntity.ok().header("TotalPages", Integer.toString(nonograms.getTotalPages())).body(nonograms.getContent());
     }
 
     @CrossOrigin
